@@ -9,7 +9,8 @@ class HomePage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
           body: SingleChildScrollView(
-        padding: EdgeInsets.all(20),
+        physics: BouncingScrollPhysics(),
+        padding: EdgeInsets.all(15),
         child: Column(
           children: [
             Row(
@@ -54,13 +55,13 @@ class HomePage extends StatelessWidget {
                       child: Container(
                         decoration: BoxDecoration(
                             gradient: LinearGradient(
+                                begin: Alignment.bottomCenter,
+                                end: Alignment.topCenter,
                                 tileMode: TileMode.clamp,
-                                transform: GradientRotation(2.35619),
                                 colors: [
-                                  Color(0xFF818AF9).withOpacity(0.5),
-                                  Color(0xFF818AF9).withOpacity(0.5)
+                                  Color(0xFF818AF9).withOpacity(0),
+                                  Color.fromARGB(255, 206, 163, 255),
                                 ]),
-                            color: Colors.red,
                             shape: BoxShape.circle),
                       ),
                     ),
@@ -71,10 +72,13 @@ class HomePage extends StatelessWidget {
                       bottom: -20,
                       child: Container(
                         decoration: BoxDecoration(
-                            gradient: LinearGradient(colors: [
-                              Color(0xFF818AF9).withOpacity(0.5),
-                              Color(0xFF818AF9).withOpacity(0.5),
-                            ]),
+                            gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                  Color(0xFF818AF9).withOpacity(0),
+                                  Color(0xFF818AF9).withOpacity(1),
+                                ]),
                             color: Colors.black,
                             shape: BoxShape.circle),
                       ),
@@ -89,8 +93,8 @@ class HomePage extends StatelessWidget {
                         child: Align(
                       alignment: Alignment.topLeft,
                       child: Container(
-                        margin: EdgeInsets.all(10),
-                        padding: EdgeInsets.all(20),
+                        margin: EdgeInsets.all(20),
+                        padding: EdgeInsets.all(10),
                         width: MediaQuery.of(context).size.width * 0.5,
                         child: Column(children: [
                           RichText(
@@ -100,18 +104,24 @@ class HomePage extends StatelessWidget {
                                     text: 'Your',
                                     style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 25,
+                                      fontSize: 20,
                                     )),
                                 TextSpan(
                                     text: ' Catrine',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white,
-                                        fontSize: 25)),
+                                        fontSize: 20)),
                                 TextSpan(
-                                    text: ' Will',
+                                    text: ' will get vaccination',
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 25)),
+                                        color: Colors.white, fontSize: 20)),
+                                TextSpan(
+                                    text: ' tomorrow at 07.00 am!',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold))
                               ])),
                         ]),
                       ),
