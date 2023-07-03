@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:latihan_bloc/cubits/counter_cubit/counter_cubit_cubit.dart';
 import 'package:latihan_bloc/cubits/theme_cubit/theme_cubit.dart';
@@ -12,6 +13,18 @@ void main() async {
   // initialize local notification
   await Notify.init();
   await Firebase.initializeApp();
+
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.transparent,
+      systemNavigationBarIconBrightness: Brightness.dark,
+      statusBarBrightness: Brightness.dark,
+      systemNavigationBarDividerColor: Colors.transparent,
+      systemStatusBarContrastEnforced: true,
+      systemNavigationBarContrastEnforced: true,
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.light));
 
   runApp(const MyApp());
 }
