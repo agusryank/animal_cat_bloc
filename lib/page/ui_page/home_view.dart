@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dart:ui' as ui;
+import 'package:latihan_bloc/widget/custom_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -13,6 +13,7 @@ class HomePage extends StatelessWidget {
         padding: EdgeInsets.all(15),
         child: Column(
           children: [
+            // Text Header ========================================
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -34,6 +35,7 @@ class HomePage extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
+            // Text Header ========================================
             Container(
               height: 200,
               width: MediaQuery.of(context).size.width,
@@ -83,49 +85,56 @@ class HomePage extends StatelessWidget {
                             shape: BoxShape.circle),
                       ),
                     ),
-                    Positioned.fill(
-                        child: Align(
+                    Poslign(
+                        alignment: Alignment.centerRight,
+                        child: SizedBox(
+                          width: 150,
+                          height: 150,
+                          child: GetImage(
+                            'bubble.png',
+                            fit: BoxFit.fill,
+                          ),
+                        )),
+                    Poslign(
                       alignment: Alignment.centerRight,
-                      child: Image.asset(
-                          'assets/images/bengal-kitten-isolated.png'),
-                    )),
-                    Positioned.fill(
-                        child: Align(
-                      alignment: Alignment.topLeft,
-                      child: Container(
-                        margin: EdgeInsets.all(20),
-                        padding: EdgeInsets.all(10),
-                        width: MediaQuery.of(context).size.width * 0.5,
-                        child: Column(children: [
-                          RichText(
-                              textAlign: TextAlign.left,
-                              text: TextSpan(children: [
-                                TextSpan(
-                                    text: 'Your',
-                                    style: TextStyle(
+                      child: SizedBox(
+                          width: 210,
+                          height: 210,
+                          child: GetImage('bengal-kitten-isolated.png')),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(20),
+                      padding: EdgeInsets.all(10),
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      child: Column(children: [
+                        RichText(
+                            textAlign: TextAlign.left,
+                            text: TextSpan(children: [
+                              TextSpan(
+                                  text: 'Your',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                  )),
+                              TextSpan(
+                                  text: ' Catrine',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                      fontSize: 20)),
+                              TextSpan(
+                                  text: ' will get vaccination',
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20)),
+                              TextSpan(
+                                  text: ' tomorrow at 07.00 am!',
+                                  style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 20,
-                                    )),
-                                TextSpan(
-                                    text: ' Catrine',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                        fontSize: 20)),
-                                TextSpan(
-                                    text: ' will get vaccination',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 20)),
-                                TextSpan(
-                                    text: ' tomorrow at 07.00 am!',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold))
-                              ])),
-                        ]),
-                      ),
-                    )),
+                                      fontWeight: FontWeight.bold))
+                            ])),
+                      ]),
+                    ),
                   ],
                 ),
               ),
