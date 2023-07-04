@@ -49,6 +49,7 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
           theme: context.watch<ThemeCubit>().state.themeData,
           home: HomePage(),
+          debugShowCheckedModeBanner: false,
         );
       }),
     );

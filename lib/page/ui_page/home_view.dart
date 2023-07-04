@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:latihan_bloc/widget/custom_widget.dart';
-import 'package:lazyui/lazyui.dart' hide Poslign, GetImage;
+import 'package:lazyui/lazyui.dart' hide Poslign;
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -179,57 +179,142 @@ class HomePage extends StatelessWidget {
                     color: Color(0xFFF6F6F6),
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  padding: EdgeInsets.all(10),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Iconr(
-                          Icons.search,
-                          color: Colors.grey,
-                          margin: Ei.only(r: 20),
-                        ),
-                        Flexible(
-                          child: TextField(
-                            decoration: InputDecoration(
-                                hintText: 'Find best vaccinate, treatment...',
-                                hintStyle: TextStyle(color: Colors.grey),
-                                border: InputBorder.none),
-                          ),
-                        )
-                      ])),
+                  padding: EdgeInsets.all(20),
+                  child: Row(children: [
+                    Iconr(
+                      Icons.search,
+                      color: Colors.grey,
+                      margin: Ei.only(r: 20),
+                    ),
+                    Textr(
+                      'Find best vaccinate, treatment...',
+                      style: TextStyle(color: Colors.grey),
+                    )
+                  ])),
             ),
 
             SizedBox(
-              height: 15,
+              height: 80,
+              width: MediaQuery.of(context).size.width,
+              child: ListView.separated(
+                  padding: Ei.all(15),
+                  itemCount: 5,
+                  separatorBuilder: ((context, index) => SizedBox(width: 10)),
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  physics: BouncingScrollPhysics(),
+                  itemBuilder: ((context, index) {
+                    List<String> text = [
+                      'Vaccinate',
+                      'Treatment',
+                      'Grooming',
+                      'Pet Shop',
+                      'Pet Hotel'
+                    ];
+
+                    return Container(
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: index == 0
+                            ? Color(0xFF818AF9)
+                            : Colors.black.withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Center(
+                          child: Text(
+                        text[index],
+                        style: Gfont.fs18.copyWith(
+                            color: index == 0 ? Colors.white : Colors.black38),
+                      )),
+                    );
+                  })),
             ),
 
-            Padding(
-              padding: const EdgeInsets.only(left: 15),
-              child: SizedBox(
-                height: 50,
-                width: MediaQuery.of(context).size.width,
-                child: ListView.separated(
-                    itemCount: 5,
-                    separatorBuilder: ((context, index) => SizedBox(width: 10)),
-                    scrollDirection: Axis.horizontal,
-                    shrinkWrap: true,
-                    physics: BouncingScrollPhysics(),
-                    itemBuilder: ((context, index) {
-                      return Container(
-                        width: 100,
-                        decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(0.1),
-                          borderRadius: BorderRadius.circular(10),
+            ListView.separated(
+                separatorBuilder: ((context, index) => SizedBox(height: 10)),
+                itemCount: 10,
+                padding: EdgeInsets.only(left: 15, right: 15, bottom: 20),
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemBuilder: ((context, index) {
+                  return Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            blurRadius: 10,
+                            offset: Offset(0, 5))
+                      ],
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    padding: EdgeInsets.all(20),
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          height: 130,
+                          width: 120,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: GetImage(
+                              'https://plus.unsplash.com/premium_photo-1661962620229-614e281fe009?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=869&q=80',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                         ),
-                        child: Center(
-                            child: Text(
-                          'Catrine',
-                          style: TextStyle(color: Colors.grey),
-                        )),
-                      );
-                    })),
-              ),
-            )
+                        SizedBox(width: 20),
+                        Flexible(
+                          child: Col(
+                            children: [
+                              Textr('Dr. John Doe',
+                                  margin: EdgeInsets.only(bottom: 10),
+                                  style: Gfont.fs19
+                                      .copyWith(fontWeight: FontWeight.bold)),
+                              Textr('Service : Vaccinate',
+                                  margin: EdgeInsets.only(bottom: 10),
+                                  style: Gfont.fs16),
+                              Container(
+                                margin: EdgeInsets.only(bottom: 10),
+                                child: Row(
+                                  children: [
+                                    Iconr(Ti.mapPin,
+                                        color: Colors.grey, size: 25),
+                                    Textr(
+                                      '10 km',
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment: Maa.spaceBetween,
+                                children: [
+                                  Textr(
+                                    'Available For ',
+                                    style: Gfont.fs18
+                                        .copyWith(color: Colors.green),
+                                  ),
+                                  Row(
+                                    children: [
+                                      GetImage(
+                                        'icon-cat.svg',
+                                        size: 25,
+                                      ),
+                                      SizedBox(width: 10),
+                                      GetImage(
+                                        'icon-dog.svg',
+                                        size: 25,
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  );
+                }))
           ],
         ),
       )),

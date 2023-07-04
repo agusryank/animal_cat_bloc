@@ -46,7 +46,7 @@ dependencies:
   lazyui:
     git:
       url: https://github.com/ashtav/flutter-lazyui.git
-      ref: master
+      ref: dev
 
 dev_dependencies:
   flutter_test:
